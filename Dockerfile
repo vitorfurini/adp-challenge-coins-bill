@@ -1,10 +1,9 @@
 FROM openjdk:17
 LABEL authors="Vitor Furini"
 
-ADD target/invoice-api-0.0.1-SNAPSHOT.jar app.jar
+ADD target/*.jar app.jar
+ADD run.sh run.sh
 
-ARG JAR_FILE=out/artifacts/invoice_api_jar/*.jar
-
-COPY ${JAR_FILE} app.jar
+RUN chmod +x run.sh
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
